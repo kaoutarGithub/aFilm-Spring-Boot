@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Film List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/film/add}">Add
+			New Film</a>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Films</h3>
+
+				<div class="card-tools">
+					<div class="input-group input-group-sm" style="width: 150px;">
+						<input type="text" name="table_search"
+							class="form-control float-right" placeholder="Search">
+
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Duree</th>
+							<th>Annee</th>
+							<th>Genre</th>
+							<th>Nationalite</th>
+							<th>Realisateur</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="s : ${filmList}">
+							<td th:text="${s.title}"></td>
+							<td th:text="${s.duree}"></td>
+							<td th:text="${s.annee}"></td>
+							<td th:text="${s.genre.libelle}"></td>
+							<td th:text="${s.nationalite.libelle}"></td>
+							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
+							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
+								th:href="${'/film/update/'+s.ID}">Update</a> | <a
+								th:href="@{'/film/details/'+${s.ID}}">Details</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+	</div>
+</body>
+</html>

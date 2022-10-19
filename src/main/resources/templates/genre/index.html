@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Of Genres</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/genre/add}">Add
+			New Genre</a>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Genres</h3>
+
+				<div class="card-tools">
+					<form method="get" th:action="@{/genre}">
+						<div class="input-group input-group-sm" style="width: 150px;">
+							<input type="text" name="filter" class="form-control float-right"
+								placeholder="Search" th:value="${filter}">
+
+							<div class="input-group-append">
+								<button type="submit" class="btn btn-default">
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>Libelle</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="s : ${list}">
+							<td th:text="${s.libelle}"></td>
+							<td><a th:href="${'/genre/delete/'+s.ID}">Delete</a> | <a
+								th:href="${'/genre/update/'+s.ID}">Update</a> | <a
+								th:href="@{'/genre/details/'+${s.ID}}">Details</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+	</div>
+</body>
+</html>

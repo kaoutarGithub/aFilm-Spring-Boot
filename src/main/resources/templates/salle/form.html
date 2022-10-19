@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Salles Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Salles Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="salleForm" th:object="${salle}" th:action="@{/salle/save}" method="post">
+				<input type="hidden" th:field="*{ID}"/>
+				<div class="card-body">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Numero</label> <input
+							type="number" name="numero" class="form-control"
+							id="numero" placeholder="Enter Salle's numero" th:field="*{numero}">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Capacity</label> <input
+							type="number" name="capacity" class="form-control"
+							id="capacity" placeholder="Enter Salle's capacity" th:field="*{capacite}">
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

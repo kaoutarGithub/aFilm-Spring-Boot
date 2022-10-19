@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Film Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Film Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="nationaliteForm" th:object="${film}"
+				th:action="@{/film/save}" method="post">
+				<input type="hidden" th:field="*{ID}" />
+				<div class="card-body">
+					<div class="form-group">
+						<label for="title">Title</label> <input type="text"
+							name="title" class="form-control" id="title"
+							placeholder="Enter Film's Title" th:field="*{title}">
+					</div>
+					<div class="form-group">
+						<label for="duree">Duree</label> <input type="number"
+							name="duree" class="form-control" id="duree"
+							placeholder="Enter Film's Duree" th:field="*{duree}">
+					</div>
+					<div class="form-group">
+						<label for="annee">Annee</label> <input type="number"
+							name="annee" class="form-control" id="annee"
+							placeholder="Enter Film's Annee" th:field="*{annee}">
+					</div>
+					
+					<div class="form-group">
+						<label for="genre">Genre</label> 
+						<select th:field="*{genre}">
+							<option th:each="g:${genres}" th:value="${g.ID}" th:text="${g.libelle}" />
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="nationalite">Nationalite</label> 
+						<select th:field="*{nationalite}">
+							<option th:each="n:${nationalites}" th:value="${n.ID}" th:text="${n.libelle}" />
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="realisateur">Realisateur</label> 
+						<select th:field="*{realisateur}">
+							<option th:each="p:${personnes}" th:value="${p.ID}" th:text="${p.nom}+' '+${p.prenom}" />
+						</select>
+					</div>
+					
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

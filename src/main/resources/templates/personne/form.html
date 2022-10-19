@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Personne Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="personneForm" th:object="${personne}" th:action="@{/personne/save}"
+				method="post" enctype="multipart/form-data">
+				<input type="hidden" th:field="*{ID}" />
+				<div class="card-body">
+					<div class="form-group">
+						<label for="nom">Nom</label> <input
+							type="text" name="nom" class="form-control" id="nom"
+							placeholder="Enter nom" th:field="*{nom}">
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prenom</label> <input
+							type="text" name="prenom" class="form-control" id="prenom"
+							placeholder="Enter prenom" th:field="*{prenom}">
+					</div>
+					<div class="form-group">
+						<label for="dateNaissance">Date Naissance</label> <input
+							type="date" name="dateNaissance" class="form-control" id="dateNaissance"
+							placeholder="Enter Date de Naissance" th:field="*{dateNaissance}">
+					</div>
+					<div class="form-group">
+						<label for="typePersonne">Type de Personne</label>
+						<select th:field=*{typePersonne}>
+							<option value="ACTEUR">ACTEUR</option>
+							<option value="REALISATEUR">REALISATEUR</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="nationalite">Nationalite</label>
+						<select th:field=*{nationalite}>
+							<option th:each="n:${nationalites}" th:value="${n.ID}"
+							th:text="${n.libelle}"></option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="photo">Photo</label> <input
+							type="file" name="file" class="form-control" id="photo"
+							placeholder="Enter photo file">
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

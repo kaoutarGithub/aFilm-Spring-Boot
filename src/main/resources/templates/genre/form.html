@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Genre Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Genres Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="genreForm" th:object="${genre}" th:action="@{/genre/save}"
+				method="post">
+				<input type="hidden" th:field="*{ID}" />
+				<div class="card-body">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Libelle</label> <input
+							type="text" name="Libelle" class="form-control" id="libelle"
+							placeholder="Enter Genre's Libelle" th:field="*{libelle}">
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

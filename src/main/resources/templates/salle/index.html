@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List of Salles</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/salle/add}">Add New Salle</a>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Salles</h3>
+
+				<div class="card-tools">
+					<div class="input-group input-group-sm" style="width: 150px;">
+						<input type="text" name="table_search"
+							class="form-control float-right" placeholder="Search">
+
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>Numero</th>
+							<th>Capacite</th>
+							<th>Created At</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="s : ${listSalles}">
+							<td th:text="${s.numero}"></td>
+							<td th:text="${s.capacite}"></td>
+							<td th:text="${s.addedDate}"></td>
+							<td><a th:href="${'/salle/delete/'+s.ID}">Delete</a> | <a
+								th:href="${'/salle/update/'+s.ID}">Update</a> | <a
+								th:href="@{'/salle/details/'+${s.ID}}">Details</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+	</div>
+</body>
+</html>

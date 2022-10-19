@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="shared/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Nationalite Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Nationalites Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="nationaliteForm" th:object="${nationalite}" th:action="@{/nationalite/save}"
+				method="post">
+				<input type="hidden" th:field="*{ID}" />
+				<div class="card-body">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Libelle</label> <input
+							type="text" name="nationalite" class="form-control" id="nationalite"
+							placeholder="Enter Nationalite's Name" th:field="*{libelle}">
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>
