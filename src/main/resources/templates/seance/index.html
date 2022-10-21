@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List of Seance</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/seance/add}">Add New Seance</a>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Seance</h3>
+
+				<div class="card-tools">
+					<div class="input-group input-group-sm" style="width: 150px;">
+						<input type="text" name="table_search"
+							class="form-control float-right" placeholder="Search">
+
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>Date de production</th>
+                            <th>Heure début</th>
+                            <th>Heure fin</th>
+                            <th>Salle</th>
+                            <th>Film</th>
+                            <th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="s : ${listSeances}">
+						    <td th:text="${s.dateProjection}"></td>
+                            <td th:text="${s.dateDebuT}"></td>
+                            <td th:text="${s.dateFin}"></td>
+                            <td th:text="${s.salle}"></td>
+                            <td th:text="${s.film}"></td>
+							<td><a th:href="${'/seance/delete/'+s.ID}">Delete</a> | <a
+								th:href="${'/seance/update/'+s.ID}">Update</a> | <a
+								th:href="@{'/seance/details/'+${s.ID}}">Details</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+	</div>
+</body>
+</html>

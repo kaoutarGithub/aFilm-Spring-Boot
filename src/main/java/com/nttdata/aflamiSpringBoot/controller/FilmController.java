@@ -1,13 +1,18 @@
 package com.nttdata.aflamiSpringBoot.controller;
 
+import java.io.IOException;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.nttdata.aflamiSpringBoot.entity.Film;
 import com.nttdata.aflamiSpringBoot.enums.TypePersonne;
@@ -15,6 +20,7 @@ import com.nttdata.aflamiSpringBoot.service.FilmService;
 import com.nttdata.aflamiSpringBoot.service.GenreService;
 import com.nttdata.aflamiSpringBoot.service.NationaliteService;
 import com.nttdata.aflamiSpringBoot.service.PersonneService;
+import com.nttdata.aflamiSpringBoot.utils.FileUtils;
 
 @Controller
 @RequestMapping("/film")
@@ -23,6 +29,7 @@ public class FilmController {
 	GenreService genreService;
 	NationaliteService nationaliteService;
 	PersonneService personneService;
+	private final String UPLOAD_DIRR = "/src/main/resources/static/MediaFilm/";
 
 	public FilmController(FilmService filmService, 
 			GenreService genreService, 
@@ -61,14 +68,34 @@ public class FilmController {
 		return "film/form";
 	}
 	@PostMapping(value = "/save")
-	public String save(Film film) {
+	public String save(@RequestParam("file") MultipartFile file,Film film) {
+		if(!file.isEmpty()) {
+			String fileName=StringUtils.cleanPath(file.getOriginalFilename());
+			fileName=UUID.randomUUID().toString()+fileName;
+			String dest=UPLOAD_DIRR;
+			try {
+				FileUtils.saveFile(dest, fileName, file);
+				film.setPhoto("/MediaFilm/"+fileName);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		filmService.save(film);
 		return "redirect:/film";
 	}
+	
+	
+	
 	@GetMapping(value = "/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		filmService.delete(id);
 		return "redirect:/film";
+	}
+	
+	@GetMapping(value = "/details")
+	public String dds() {
+		return "film/details";
 	}
 
 }

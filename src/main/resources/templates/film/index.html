@@ -38,6 +38,7 @@
 							<th>Genre</th>
 							<th>Nationalite</th>
 							<th>Realisateur</th>
+							<th>Photo</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -49,6 +50,7 @@
 							<td th:text="${s.genre.libelle}"></td>
 							<td th:text="${s.nationalite.libelle}"></td>
 							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
+							<td><img th:src="@{${s.photo}}" width="30" height="50"/></td>
 							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
 								th:href="${'/film/update/'+s.ID}">Update</a> | <a
 								th:href="@{'/film/details/'+${s.ID}}">Details</a></td>

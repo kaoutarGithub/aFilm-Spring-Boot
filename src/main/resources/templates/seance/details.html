@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Salle Details</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<dl class="ml-4 my-2">
+			<dt>Salle Numero</dt>
+			<dd th:text="${salle.numero}"></dd>
+			<dt>Capacity</dt>
+			<dd th:text="${salle.capacite}"></dd>
+			<dt>Added At</dt>
+			<dd th:text="${salle.addedDate}"></dd>
+		</dl>
+		<hr class="my-2" />
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Date Projection</th>
+					<th>Date Debut</th>
+					<th>Date Fin</th>
+					<th>Film Title</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="s : ${seances}">
+					<td th:text="${s.dateProjection}"></td>
+					<td th:text="${s.dateDebuT}"></td>
+					<td th:text="${s.dateFin}"></td>
+					<td th:text="${s.film.title}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

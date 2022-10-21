@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,14 +28,20 @@ public class Seance extends AbstractModel {
 	 */
 	private static final long serialVersionUID = 5970978952680800668L;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date_projection")
 	private Date dateProjection;
 	
-	@Column(name = "date_debut")
-	private Time dateDebuT;
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
+	@Column(name = "heure_debut")
+	private Date  heuredebut;
 	
-	@Column(name = "date_fin")
-	private Time dateFin;
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
+	@Column(name = "heure_fin")
+	private Date  	heureFin;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SALLE_ID")

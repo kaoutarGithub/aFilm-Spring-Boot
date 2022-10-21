@@ -35,6 +35,9 @@ public class Film extends AbstractModel {/**
 	@Column(nullable = false)
 	private int annee;
 	
+	@Column(nullable = true,length = 100)
+	private String photo;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "GENRE_ID")
 	private Genre genre;

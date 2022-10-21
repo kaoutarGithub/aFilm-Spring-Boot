@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Seances Form</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Seances Formulaire</h3>
+                </div>
+
+                <form id="seanceForm" th:object="${seance}" th:action="@{/seance/save}" method="post">
+                    <input type="hidden" th:field="*{ID}" />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Date projection</label> <input type="date" name="date_projection" class="form-control" id="date_projection" placeholder="Enter date projection" th:field="*{dateProjection}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Heure debut</label>
+                            <input type="time" min="00:00" max="23:59" name="heure_debut" class="form-control" id="heure_debut" placeholder="Enter heure debut" th:field="*{dateDebuT}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Heure fin</label> <input type="time" min="00:00" max="23:59" name="heure_fin" class="form-control" id="heure_fin" placeholder="Enter heure fin" th:field="*{dateFin}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label >Salle id</label>
+                            <select th:field="*{salle}" class="form-control">
+                                <option th:each="s:${listeSalle}" th:value="${s.ID}" th:text="${s.numero}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="film">FILM ID</label>
+                            <select th:field="*{film}" class="form-control">
+                                <option th:each="f:${listeFilms}" th:value="${f.ID}" th:text="${f.title}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -14,6 +14,11 @@
 			<div class="card-header">
 				<h3 class="card-title">Personnes</h3>
 
+				<form th:action="@{/search}" method="get">
+				  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Owner Name & Shop Type" size="50" >
+				  <button type="submit" class="btn btn-info" >Search</button>
+				  <button type="submit" class="btn btn-info" >Reset</button>
+				  </form>
 				<div class="card-tools">
 					<div class="input-group input-group-sm" style="width: 150px;">
 						<input type="text" name="table_search"
@@ -37,6 +42,7 @@
 							<th>Date Naissance</th>
 							<th>Type</th>
 							<th>Nationalite</th>
+							<th>Photo</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -47,6 +53,7 @@
 							<td th:text="${s.dateNaissance}"></td>
 							<td th:text="${s.typePersonne}"></td>
 							<td th:text="${s.nationalite.libelle}"></td>
+							<td><img th:src="@{${s.photo}}" width="30" height="50"/></td>
 							<td><a th:href="${'/personne/delete/'+s.ID}">Delete</a> | <a
 								th:href="${'/personne/update/'+s.ID}">Update</a> | <a
 								th:href="@{'/personne/details/'+${s.ID}}">Details</a></td>

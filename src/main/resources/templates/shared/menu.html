@@ -64,6 +64,30 @@
                         </li>
                     </ul>
                 </li>
+                
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Seance
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/seance">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Seance</p>
+                            </a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/seance/add">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Seance</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">
@@ -85,18 +109,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/genre">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>Genres</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/nationalite">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>Nationalites</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/personne">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Personnes</p>
@@ -107,6 +119,57 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>Films</p>
                     </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Paramaètres
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-globe"></i>
+                                <p>Nationalités</p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/nationalite/add">
+                                        <i class="fa fa-plus nav-icon"></i>
+                                        <p>Ajouter Nationalité</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/nationalite/">
+                                        <i class="fa fa-list nav-icon"></i>
+                                        <p>Liste des Nationalités</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="far fa-circle"></i>
+                                <p>Genre</p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/genre/add">
+                                        <i class="fa fa-plus nav-icon"></i>
+                                        <p>Ajouter Genre</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/genre">
+                                        <i class="fa fa-list nav-icon"></i>
+                                        <p>Liste des Genres</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>

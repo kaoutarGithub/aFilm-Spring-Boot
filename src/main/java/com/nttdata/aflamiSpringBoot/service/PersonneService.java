@@ -28,6 +28,13 @@ public class PersonneService {
 	public Personne save(Personne personne) {
 		return personneRepository.save(personne);
 	}
+	
+	/*
+	 * public Personne save(Personne personne) { if(personne.getPhoto() != null) {
+	 * personne.setPhoto(personne.getPhoto()); } else {
+	 * personne.setPhoto("/thumbnail/d32084d9-f300-475b-9134-b1fb94cd036elogin.png")
+	 * ; } return personneRepository.save(personne); }
+	 */
 	public void delete(Long ID) {
 		personneRepository.deleteById(ID);
 	}

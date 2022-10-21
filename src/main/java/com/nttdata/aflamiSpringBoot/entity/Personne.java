@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -42,6 +44,7 @@ public class Personne extends AbstractModel {
 	@Column(nullable = true,length = 100)
 	private String photo;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "date_naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateNaissance;
