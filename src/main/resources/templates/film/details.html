@@ -1,207 +1,180 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="~{shared/layout}"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="shared/layout">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Details Actor - Directo</title>
+<meta charset="ISO-8859-1">
+<title>Personne Details</title>
+
+<link rel="stylesheet" th:href="@{/js/ekko-lightbox.css}">
 </head>
 <body>
-<div layout:fragment="content">
-	<section layout:fragment="header">
-		<h1>Details Moviesr</h1>
-		<ol class="breadcrumb">
-			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active" th:text="${ 'Détails '+ film.titre}"></li>
-		</ol>
-	</section>
-	<section class="content">
-		<div layout:fragment="content">
-			<div class="content-wrapper p-4" style="margin-left: 10px;">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="box box-primary">
-							<div class="box-body box-profile">
-								<img class="profile-user-img img-responsive"
-									th:src="@{${film.cover}}"
-									alt="Actor/Director profile picture"/>
-								<h3 class="profile-username text-center"
-									th:text="${film.titre}"></h3>
-								<p class="text-muted text-center"
-									th:text="${'Country : '+film.nationalite.libelle}">
-								</p>
-								<ul class="list-group list-group-unbordered">
-									<li class="list-group-item"><b>Time : </b> <a
-										class="pull-right"
-										th:text="${time}"></a>
-									</li>
-									<li class="list-group-item"><b>Release Date : </b> <a
-										class="pull-right"
-										th:text="${film.annee}"></a></li>
-								</ul>
-								<a href="#" class="btn btn-primary btn-block"><b>Give
-										Your Opinion</b></a>
-							</div>
 
-						</div>
+	<div layout:fragment="content">
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1>Film details</h1>
 					</div>
-					<!-- class md-3 -->
-					<div class="col-md-9">
-						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#description" data-toggle="tab">Description</a></li>
-								<li><a href="#historique" data-toggle="tab">Historique</a></li>
-								<li><a href="#evaluation" data-toggle="tab">Evaluation</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="active tab-pane" id="description">
-								
-
-								</div>
-
-								<div class="tab-pane" id="historique">
-
-									<ul class="timeline timeline-inverse">
-
-										<li class="time-label"><span class="bg-red"> 10
-												Feb. 2014 </span></li>
-
-
-										<li><i class="fa fa-envelope bg-blue"></i>
-											<div class="timeline-item">
-												<span class="time"><i class="fa fa-clock-o"></i>
-													12:05</span>
-												<h3 class="timeline-header">
-													<a href="#">Support Team</a> sent you an email
-												</h3>
-												<div class="timeline-body">Etsy doostang zoodles
-													disqus groupon greplin oooj voxy zoodles, weebly ning
-													heekya handango imeem plugg dopplr jibjab, movity jajah
-													plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-													quora plaxo ideeli hulu weebly balihoo...</div>
-												<div class="timeline-footer">
-													<a class="btn btn-primary btn-xs">Read more</a> <a
-														class="btn btn-danger btn-xs">Delete</a>
-												</div>
-											</div></li>
-
-
-										<li><i class="fa fa-user bg-aqua"></i>
-											<div class="timeline-item">
-												<span class="time"><i class="fa fa-clock-o"></i> 5
-													mins ago</span>
-												<h3 class="timeline-header no-border">
-													<a href="#">Sarah Young</a> accepted your friend request
-												</h3>
-											</div></li>
-
-
-										<li><i class="fa fa-comments bg-yellow"></i>
-											<div class="timeline-item">
-												<span class="time"><i class="fa fa-clock-o"></i> 27
-													mins ago</span>
-												<h3 class="timeline-header">
-													<a href="#">Jay White</a> commented on your post
-												</h3>
-												<div class="timeline-body">Take me to your leader!
-													Switzerland is small and neutral! We are more like Germany,
-													ambitious and misunderstood!</div>
-												<div class="timeline-footer">
-													<a class="btn btn-warning btn-flat btn-xs">View comment</a>
-												</div>
-											</div></li>
-
-
-										<li class="time-label"><span class="bg-green"> 3
-												Jan. 2014 </span></li>
-
-
-										<li><i class="fa fa-camera bg-purple"></i>
-											<div class="timeline-item">
-												<span class="time"><i class="fa fa-clock-o"></i> 2
-													days ago</span>
-												<h3 class="timeline-header">
-													<a href="#">Mina Lee</a> uploaded new photos
-												</h3>
-												<div class="timeline-body">
-													<img src="http://placehold.it/150x100" alt="..."
-														class="margin"> <img
-														src="http://placehold.it/150x100" alt="..." class="margin">
-													<img src="http://placehold.it/150x100" alt="..."
-														class="margin"> <img
-														src="http://placehold.it/150x100" alt="..." class="margin">
-												</div>
-											</div></li>
-
-										<li><i class="fa fa-clock-o bg-gray"></i></li>
-									</ul>
-								</div>
-
-								<div class="tab-pane" id="evaluation">
-									<form class="form-horizontal">
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-											<div class="col-sm-10">
-												<input type="email" class="form-control" id="inputName"
-													placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputEmail" class="col-sm-2 control-label">Email</label>
-											<div class="col-sm-10">
-												<input type="email" class="form-control" id="inputEmail"
-													placeholder="Email">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputName"
-													placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-											<div class="col-sm-10">
-												<textarea class="form-control" id="inputExperience"
-													placeholder="Experience"></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputSkills"
-													placeholder="Skills">
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<div class="checkbox">
-													<label> <input type="checkbox"> I agree to
-														the <a href="#">terms and conditions</a>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<button type="submit" class="btn btn-danger">Submit</button>
-											</div>
-										</div>
-									</form>
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
 				</div>
 			</div>
-			<!-- class row -->
+		</section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+
+					<!-- Profile Image -->
+					<div class="card card-primary card-outline">
+						<div class="card-body box-profile">
+							<div class="text-center">
+								<img class="profile-user-img img-fluid img-circle"
+									th:src="@{${film.photo}}" alt="User profile picture">
+							</div>
+
+							<h3 class="profile-username text-center" th:text="${film.title}"></h3>
+
+							<p class="text-muted text-center" th:text="${film.genre.libelle}"></p>
+
+							<ul class="list-group list-group-unbordered mb-3">
+								<li class="list-group-item"><b>Nationalite</b> <a
+									class="float-right" th:text="${film.nationalite.libelle}"></a>
+								</li>
+								<li class="list-group-item"><b>Annee</b> <a
+									class="float-right" th:text="${film.annee}"></a></li>
+								<li class="list-group-item"><b>Duree</b> <a
+									class="float-right" th:text="${film.duree}+h"></a></li>
+							</ul>
+
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<div class="card card-primary">
+						<div class="card-header">
+							<h3 class="card-title">About Director</h3>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+
+							<div class="card bg-light">
+								<div class="card-header text-muted border-bottom-0">
+									<span th:text="${film.realisateur.typePersonne}"></span>
+								</div>
+								<div class="card-body pt-0">
+									<div class="row">
+										<div class="col-7">
+											<h4 style="color: #007bff;">
+												<b
+													th:text="${film.realisateur.prenom}+' '+${film.realisateur.nom}"></b>
+											</h4>
+											<p>
+												Nationalite: <span class="text-muted border-bottom-0"
+													th:text="${film.realisateur.nationalite.libelle}"></span>
+											</p>
+											<p>
+												Birth day: <span class="text-muted border-bottom-0"
+													th:text="${film.realisateur.dateNaissance}"></span>
+											</p>
+										</div>
+										<div class="col-5 text-center">
+											<img th:src="@{${film.realisateur.photo}}" alt=""
+												class="img-circle img-fluid">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.card-body -->
+					</div>
+				</div>
+				<!-- /.col -->
+				<div class="col-md-9">
+					<div class="card">
+						<div class="card-header p-2">
+							<ul class="nav nav-pills">
+								<li class="nav-item"><a class="nav-link" href="#acteurs"
+									data-toggle="tab">Acteurs</a></li>
+								<li class="nav-item"><a class="nav-link active"
+									href="#media" data-toggle="tab">Medias</a></li>
+
+							</ul>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+							<div class="tab-content">
+
+								<!-- /.tab-pane -->
+								<div class="tab-pane" id="acteurs">
+									<div class="row">
+										<div class="col-md-3" th:each="act : ${acteursFilm}"
+											th:field="*{acteursFilm}">
+											<!-- Widget: user widget style 1 -->
+											<div class="card card-widget widget-user">
+												<!-- Add the bg color to the header using any of the bg-* classes -->
+												<div class="widget-user-header bg-info">
+													<h3 class="widget-user-username"
+														th:text="${act.nom}+' '+${act.prenom}"></h3>
+													<h5 class="widget-user-desc"
+														th:text="${act.nationalite.libelle}"></h5>
+												</div>
+												<div class="widget-user-image">
+													<img class="img-circle elevation-2"
+														th:src="@{${act.photo}}" alt="User Avatar">
+												</div>
+												<div class="card-footer">
+													<div class="row">
+														<div class="col-sm-6 border-right">
+															<div class="description-block">
+																<h5 class="description-header">1,150,000</h5>
+																<span class="description-text">FOLLOWERS</span>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="description-block">
+																<h5 class="description-header"
+																	th:text="${act.dateNaissance}"></h5>
+																<span class="description-text">Birth day</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="active tab-pane" id="media">
+									<div class="card card-primary">
+										<div class="card-header">
+											<div class="card-title">Film medias</div>
+										</div>
+										<div class="card-body">
+											<div class="row">
+												<div class="col-sm-2" th:each="m : ${mediasFilm}"
+													th:field="*{mediasFilm}">
+													<a th:href="@{${m.media}}" data-toggle="lightbox"
+														data-title="sample 1 - white" data-gallery="gallery">
+														<img th:src="@{${m.media}}" class="img-fluid mb-2"
+														alt="white sample" />
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!-- /.tab-content -->
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.nav-tabs-custom -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
 		</div>
-	</section>
-	<!-- Section content -->
 	</div>
+
 </body>
 </html>

@@ -27,36 +27,39 @@
 					</div>
 				</div>
 			</div>
+			
 			<!-- /.card-header -->
 			<div class="card-body table-responsive p-0">
 				<table class="table table-hover text-nowrap">
 					<thead>
 						<tr>
+						    <th>Photo</th>
 							<th>Title</th>
 							<th>Duree</th>
 							<th>Annee</th>
 							<th>Genre</th>
 							<th>Nationalite</th>
 							<th>Realisateur</th>
-							<th>Photo</th>
-							<th></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="s : ${filmList}">
+							<td>
+							<img th:src="@{${s.photo}}" width="30" height="50"/></td>
 							<td th:text="${s.title}"></td>
 							<td th:text="${s.duree}"></td>
 							<td th:text="${s.annee}"></td>
 							<td th:text="${s.genre.libelle}"></td>
 							<td th:text="${s.nationalite.libelle}"></td>
 							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
-							<td><img th:src="@{${s.photo}}" width="30" height="50"/></td>
 							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
 								th:href="${'/film/update/'+s.ID}">Update</a> | <a
 								th:href="@{'/film/details/'+${s.ID}}">Details</a></td>
 						</tr>
 					</tbody>
 				</table>
+				
 			</div>
 			<!-- /.card-body -->
 		</div>

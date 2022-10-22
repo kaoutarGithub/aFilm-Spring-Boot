@@ -2,6 +2,7 @@ package com.nttdata.aflamiSpringBoot.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -50,11 +54,11 @@ public class Film extends AbstractModel {/**
 	@JoinColumn(name = "NATIONALITE_ID")
 	private Nationalite nationalite;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name = "FILM_ACTEUR",
-		joinColumns =@JoinColumn(name="ACTEUR_ID",referencedColumnName = "ID"),
-		inverseJoinColumns = @JoinColumn(name="FILM_ID",referencedColumnName = "ID")
+		joinColumns =@JoinColumn(name="FILM_ID",referencedColumnName = "ID"),
+		inverseJoinColumns = @JoinColumn(name="ACTEUR_ID",referencedColumnName = "ID")
 	)
 	@JsonIgnore
 	private List<Personne> acteurs;
@@ -63,5 +67,10 @@ public class Film extends AbstractModel {/**
 	@JoinColumn(name = "REALISATEUR_ID")
 	@JsonIgnore
 	private Personne realisateur;
+	
+	@OneToMany(mappedBy = "film", cascade = {CascadeType.ALL})
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Media> medias;
 
 }
